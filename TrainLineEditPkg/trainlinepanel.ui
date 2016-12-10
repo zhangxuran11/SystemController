@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>TrainLinePanel</class>
+ <widget class="QWidget" name="TrainLinePanel">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">#TrainLinePanel{
+	background-color: rgb(255, 255, 195);
+}</string>
+  </property>
+  <widget class="QListWidget" name="listWidget">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>151</width>
+     <height>551</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QListView{
+	
+	alternate-background-color: rgb(85, 170, 0);
+font: 900 14pt &quot;Ubuntu&quot;;
+color: rgb(255, 255, 255);
+border-style:solid;
+border-color: rgb(244, 244, 244);
+border-width:2px;
+
+background-color: rgb(114, 171, 171);
+show-decoration-selected: 1;
+}
+
+QListView::item{
+
+border:1px  solid;
+border-color: lightgray;
+margin:px;
+ }
+
+QListView::item:alternate{
+     background: #EEEEEE;
+ }
+
+QListView::item:selected{
+     border: 1px solid #6a6ea9;
+ }
+
+ QListView::item:selected:!active{
+     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #ABAFE5, stop: 1 #8588B2);
+ }
+
+QListView::item:selected:active{
+     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #6a6ea9, stop: 1 #888dd9);
+ }
+
+QListView::item:hover{
+     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #FAFBFE, stop: 1 #DCDEF1);
+ }</string>
+   </property>
+   <property name="alternatingRowColors">
+    <bool>false</bool>
+   </property>
+   <item>
+    <property name="text">
+     <string>新建项目</string>
+    </property>
+    <property name="background">
+     <brush brushstyle="SolidPattern">
+      <color alpha="255">
+       <red>0</red>
+       <green>255</green>
+       <blue>255</blue>
+      </color>
+     </brush>
+    </property>
+    <property name="foreground">
+     <brush brushstyle="SolidPattern">
+      <color alpha="255">
+       <red>0</red>
+       <green>0</green>
+       <blue>0</blue>
+      </color>
+     </brush>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>新建项目</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>新建项目</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QStackedWidget" name="stackedWidget">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>0</y>
+     <width>651</width>
+     <height>551</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="currentIndex">
+    <number>1</number>
+   </property>
+   <widget class="QWidget" name="page_3">
+    <widget class="QPushButton" name="add_line_ok_btn">
+     <property name="geometry">
+      <rect>
+       <x>380</x>
+       <y>370</y>
+       <width>111</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(85, 255, 255);
+selection-color: rgb(255, 89, 211);
+selection-background-color: rgb(167, 188, 255);
+font: 900 14pt &quot;Ubuntu&quot;;
+background-color: qlineargradient(spread:repeat, x1:0.468, y1:0, x2:0.463, y2:1, stop:0 rgba(29, 151, 179, 255), stop:0.458128 rgba(177, 241, 255, 255), stop:1 rgba(23, 172, 209, 255));</string>
+     </property>
+     <property name="text">
+      <string>OK</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="line_name_lineEdit">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>260</y>
+       <width>271</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font:500 20pt &quot;Ubuntu&quot;;
+color:rgb(7, 76, 95);
+background-color: rgb(190, 190, 190);
+border-top-right-radius:10px;
+border-bottom-right-radius:10px;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>80</x>
+       <y>260</y>
+       <width>161</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font:500 20pt &quot;Ubuntu&quot;;
+color:white;
+background-color: rgb(7, 76, 95);
+border-top-left-radius:10px;
+border-bottom-left-radius:10px;
+border-color:rgb(7, 76, 95);</string>
+     </property>
+     <property name="text">
+      <string>Line Name</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="train_id_lineEdit">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>140</y>
+       <width>271</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font:500 20pt &quot;Ubuntu&quot;;
+color:rgb(7, 76, 95);
+background-color: rgb(190, 190, 190);
+border-top-right-radius:10px;
+border-bottom-right-radius:10px;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>80</x>
+       <y>140</y>
+       <width>161</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font:500 20pt &quot;Ubuntu&quot;;
+color:white;
+background-color: rgb(7, 76, 95);
+border-top-left-radius:10px;
+border-bottom-left-radius:10px;
+border-color:rgb(7, 76, 95);</string>
+     </property>
+     <property name="text">
+      <string>Train No</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="page">
+    <widget class="QLabel" name="label_3">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>230</y>
+       <width>261</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font:500 16pt &quot;Loma&quot;;
+color:white;
+background-color: rgb(7, 76, 95);
+border-top-left-radius:10px;
+border-bottom-left-radius:10px;
+border-color:rgb(7, 76, 95);</string>
+     </property>
+     <property name="text">
+      <string>Current  Line Name</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="currentLineLabel">
+     <property name="geometry">
+      <rect>
+       <x>300</x>
+       <y>230</y>
+       <width>291</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font:500 20pt &quot;Ubuntu&quot;;
+color:rgb(7, 76, 95);
+background-color: rgb(190, 190, 190);
+border-top-right-radius:10px;
+border-bottom-right-radius:10px;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="hideBtn1">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>490</y>
+       <width>161</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::NoFocus</enum>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="hideBtn2">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>490</x>
+       <y>490</y>
+       <width>161</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::NoFocus</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QPushButton" name="add_line_btn">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>490</y>
+     <width>101</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(85, 255, 255);
+selection-color: rgb(255, 89, 211);
+selection-background-color: rgb(167, 188, 255);
+font: 900 14pt &quot;Ubuntu&quot;;
+background-color: qlineargradient(spread:repeat, x1:0.468, y1:0, x2:0.463, y2:1, stop:0 rgba(29, 151, 179, 255), stop:0.458128 rgba(177, 241, 255, 255), stop:1 rgba(23, 172, 209, 255));</string>
+   </property>
+   <property name="text">
+    <string>ADD LINE</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="add_station_btn">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>720</y>
+     <width>131</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(85, 255, 255);
+selection-color: rgb(255, 89, 211);
+selection-background-color: rgb(167, 188, 255);
+font: 900 14pt &quot;Ubuntu&quot;;
+background-color: qlineargradient(spread:repeat, x1:0.468, y1:0, x2:0.463, y2:1, stop:0 rgba(29, 151, 179, 255), stop:0.458128 rgba(177, 241, 255, 255), stop:1 rgba(23, 172, 209, 255));</string>
+   </property>
+   <property name="text">
+    <string>Add station</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="delete_station_btn">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>720</y>
+     <width>161</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(85, 255, 255);
+selection-color: rgb(255, 89, 211);
+selection-background-color: rgb(167, 188, 255);
+font: 900 14pt &quot;Ubuntu&quot;;
+background-color: qlineargradient(spread:repeat, x1:0.468, y1:0, x2:0.463, y2:1, stop:0 rgba(29, 151, 179, 255), stop:0.458128 rgba(177, 241, 255, 255), stop:1 rgba(23, 172, 209, 255));</string>
+   </property>
+   <property name="text">
+    <string>Del station</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="ok_btn">
+   <property name="geometry">
+    <rect>
+     <x>533</x>
+     <y>550</y>
+     <width>266</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(85, 255, 255);
+selection-color: rgb(255, 89, 211);
+selection-background-color: rgb(167, 188, 255);
+font: 900 14pt &quot;Ubuntu&quot;;
+background-color: qlineargradient(spread:repeat, x1:0.468, y1:0, x2:0.463, y2:1, stop:0 rgba(29, 151, 179, 255), stop:0.458128 rgba(177, 241, 255, 255), stop:1 rgba(23, 172, 209, 255));</string>
+   </property>
+   <property name="text">
+    <string>OK</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="setCurLineBtn">
+   <property name="geometry">
+    <rect>
+     <x>265</x>
+     <y>550</y>
+     <width>270</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(85, 255, 255);
+selection-color: rgb(255, 89, 211);
+selection-background-color: rgb(167, 188, 255);
+font: 900 14pt &quot;Ubuntu&quot;;
+background-color: qlineargradient(spread:repeat, x1:0.468, y1:0, x2:0.463, y2:1, stop:0 rgba(29, 151, 179, 255), stop:0.458128 rgba(177, 241, 255, 255), stop:1 rgba(23, 172, 209, 255));</string>
+   </property>
+   <property name="text">
+    <string>Set current line</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="runStateBtn">
+   <property name="geometry">
+    <rect>
+     <x>1</x>
+     <y>550</y>
+     <width>266</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(85, 255, 255);
+selection-color: rgb(255, 89, 211);
+selection-background-color: rgb(167, 188, 255);
+font: 900 14pt &quot;Ubuntu&quot;;
+background-color: qlineargradient(spread:repeat, x1:0.468, y1:0, x2:0.463, y2:1, stop:0 rgba(29, 151, 179, 255), stop:0.458128 rgba(177, 241, 255, 255), stop:1 rgba(23, 172, 209, 255));</string>
+   </property>
+   <property name="text">
+    <string>Run state</string>
+   </property>
+  </widget>
+  <zorder>add_line_btn</zorder>
+  <zorder>listWidget</zorder>
+  <zorder>stackedWidget</zorder>
+  <zorder>add_station_btn</zorder>
+  <zorder>delete_station_btn</zorder>
+  <zorder>ok_btn</zorder>
+  <zorder>setCurLineBtn</zorder>
+  <zorder>runStateBtn</zorder>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

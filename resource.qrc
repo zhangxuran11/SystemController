@@ -1,0 +1,18 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qss/mainframe.qss</file>
+        <file>res/bk_yh.jpg</file>
+        <file>res/train-body.jpg</file>
+        <file>res/train-end.jpg</file>
+        <file>res/train-head.jpg</file>
+        <file>res/train-body_100X90.jpg</file>
+        <file>res/train-end_100X90.jpg</file>
+        <file>res/train-head_100X90.jpg</file>
+        <file>res/bottom.png</file>
+        <file>res/left.png</file>
+        <file>res/right.png</file>
+        <file>res/top.png</file>
+        <file>kill.sh</file>
+        <file>push_wav.sh</file>
+    </qresource>
+</RCC>

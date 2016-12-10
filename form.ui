@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>770</width>
+    <height>485</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QTableWidget" name="tableWidget">
+   <property name="geometry">
+    <rect>
+     <x>260</x>
+     <y>60</y>
+     <width>431</width>
+     <height>341</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QScrollBar::sub-line:horizontal {
+		width:20px;
+      background-color: rgb(186, 186, 186);
+      height: 20px;
+border-bottom-left-radius:10px;
+border-top-left-radius:10px;
+      subcontrol-position: left;
+      subcontrol-origin: margin;
+}
+QScrollBar::add-line:horizontal {
+    width:20px;
+    background-color:rgb(186, 186, 186);
+height: 20px;
+border-bottom-right-radius:10px;
+border-top-right-radius:10px;
+    subcontrol-position:right;
+	subcontrol-origin: margin;
+}
+QScrollBar::sub-line:vertical {
+		width:20px;
+      background-color: rgb(186, 186, 186);
+      height: 20px;
+		border-top-left-radius:10px;
+		border-top-right-radius:10px;
+      subcontrol-position: top;
+      subcontrol-origin: margin;
+
+}
+QScrollBar::add-line:vertical {
+    width:20px;
+    background:rgb(186, 186, 186);
+height: 20px;
+border-bottom-left-radius:10px;
+border-bottom-right-radius:10px;
+    subcontrol-position:bottom;
+	subcontrol-origin: margin;
+}
+QScrollBar::up-arrow,QScrollBar::down-arrow ,QScrollBar::left-arrow ,QScrollBar::right-arrow  {
+    height:13px;
+    width:13px;
+}
+QScrollBar::up-arrow{
+	image: url(:/res/top.png);
+}
+QScrollBar::down-arrow{
+	image: url(:/res/bottom.png);
+}
+QScrollBar::left-arrow{
+	image: url(:/res/left.png);
+}
+QScrollBar::right-arrow{
+	image: url(:/res/right.png);
+}
+
+QScrollBar::add-page,QScrollBar::sub-page {
+	background-color: rgb(186, 186, 186);
+
+}
+
+
+QScrollBar::handle:vertical,QScrollBar::handle:horizontal{
+	background-color: qlineargradient(spread:repeat, x1:0.468, y1:0, x2:0.463, y2:1, stop:0 rgba(177, 241, 255, 255), stop:0.325123 rgba(157, 238, 255, 255), stop:1 rgba(108, 191, 212, 255));
+	border-radius:10px;
+}
+
+QScrollBar:vertical  {
+		background-color: rgb(186, 186, 186);
+    width: 20px;
+margin-top:20px;
+margin-bottom:20px;
+}
+QScrollBar:horizontal {
+background-color:rgb(186, 186, 186);
+	height:20px;
+margin-left:20px;
+margin-right:20px;
+}
+
+
+QTableWidget{
+background-color: rgb(170, 255, 0);
+alternate-background-color: rgb(170, 255, 255);
+}
+
+</string>
+   </property>
+   <property name="alternatingRowColors">
+    <bool>true</bool>
+   </property>
+   <property name="verticalScrollMode">
+    <enum>QAbstractItemView::ScrollPerPixel</enum>
+   </property>
+   <property name="horizontalScrollMode">
+    <enum>QAbstractItemView::ScrollPerPixel</enum>
+   </property>
+   <row>
+    <property name="text">
+     <string>新建行</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>新建行</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>新建行</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>新建行</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>新建行</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>新建行</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>新建行</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>新建行</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>新建行</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>新建行</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>新建行</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>新建行</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>新建行</string>
+    </property>
+   </row>
+   <column>
+    <property name="text">
+     <string>新建列</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>新建列</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>新建列</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>新建列</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>新建列</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>新建列</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>新建列</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>新建列</string>
+    </property>
+   </column>
+   <item row="0" column="0">
+    <property name="text">
+     <string>gdrg</string>
+    </property>
+   </item>
+   <item row="0" column="5">
+    <property name="text">
+     <string>hgyj</string>
+    </property>
+   </item>
+   <item row="0" column="6">
+    <property name="text">
+     <string>y</string>
+    </property>
+   </item>
+   <item row="0" column="7">
+    <property name="text">
+     <string>jhftgh</string>
+    </property>
+   </item>
+   <item row="10" column="0">
+    <property name="text">
+     <string>rgf</string>
+    </property>
+   </item>
+   <item row="10" column="5">
+    <property name="text">
+     <string>gyj</string>
+    </property>
+   </item>
+   <item row="10" column="6">
+    <property name="text">
+     <string>yg</string>
+    </property>
+   </item>
+   <item row="10" column="7">
+    <property name="text">
+     <string>ygy</string>
+    </property>
+   </item>
+   <item row="11" column="5">
+    <property name="text">
+     <string>h</string>
+    </property>
+   </item>
+   <item row="11" column="6">
+    <property name="text">
+     <string>gh</string>
+    </property>
+   </item>
+   <item row="11" column="7">
+    <property name="text">
+     <string>fthft</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QListWidget" name="listWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>30</y>
+     <width>201</width>
+     <height>401</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">alternate-background-color: rgb(92, 100, 255);</string>
+   </property>
+   <item>
+    <property name="text">
+     <string>新建项目</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>新建项目</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>新建项目</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>新建项目</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>新建项目</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>新建项目</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>新建项目</string>
+    </property>
+   </item>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
