@@ -19,7 +19,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-    new VersionSender("SystemController",1,1,12,ZTools::getCarID());
+    new VersionSender("SystemController",1,1,12);
    ioDevice = new IODeviceListener;
     trainLinePanel = new TrainLinePanel;
     connect(trainLinePanel,SIGNAL(changeCurrentLine(int)),this,SLOT(loadLineInfo(int)));

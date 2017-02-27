@@ -1,10 +1,10 @@
 #include "versionsender.h"
 #include "ztpmanager.h"
-VersionSender::VersionSender(QString devName,int majorVersion,int minorVersion,int microVersion,int _carNo) :
+#include "ztools.h"
+VersionSender::VersionSender(QString devName,int majorVersion,int minorVersion,int microVersion) :
     DevName(devName),MajorVersion(majorVersion),MinorVersion(minorVersion),MicroVersion(microVersion)
 {
     online =true;
-    carNo = _carNo;
     timer.setSingleShot(false);
     timer.setInterval(1000);
     timer.start();
@@ -19,7 +19,7 @@ void VersionSender::OnSendVersion()
         ztp.addPara("STATE","ONLINE");
     else
         ztp.addPara("STATE","OFFLINE");
-    ztp.addPara("CARNO",QString::number(carNo));
+    ztp.addPara("CARNO",QString::number(ZTools::getCarID()));
     ztp.addPara("DEVICE",DevName);
     ztp.addPara("MajorVersion",QString::number(MajorVersion));
     ztp.addPara("MinorVersion",QString::number(MinorVersion));

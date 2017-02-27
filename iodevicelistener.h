@@ -21,7 +21,6 @@ private:
     GPIO slm2;  //打开－－高电平－－有效
      int cs_slm_timer_id;
     //QTimer* cs_slm_Timer;
-    int carId;
 
 public:
     explicit IODeviceListener(QObject *parent = 0);

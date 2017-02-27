@@ -30,7 +30,7 @@ void DevInfo::slot_timeout()
         QString cmd = "/tmp/kill.sh "+DevIp+" "+dev;
         system(cmd.toAscii().data());
         cmd = "echo "+cmd+" >> /kill_log.txt";
-        system(cmd.toAscii().data());
+        //system(cmd.toAscii().data());
         emit closeClient();
     }
 }

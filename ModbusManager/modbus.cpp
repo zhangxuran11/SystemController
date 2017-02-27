@@ -15,8 +15,8 @@ void Modbus::load(QByteArray pkg)
     char* off = pkg.data();
     addr = (int)off[0];
     code = (int)off[1];
-    //qDebug("___addr___ %d",addr);
-    //qDebug("___code___ %d",code);
+//    qDebug("___addr___ %d",addr);
+//    qDebug("___code___ %d",code);
 
     if(code == 0x03)
     {
@@ -55,7 +55,7 @@ void Modbus::load(QByteArray pkg)
         return;
     rawData = pkg;
     quint16 res = calCLR();
-//    qDebug()<<"calCLR= "<<res;
+//    qDebug("calCLR=%x  LRC=%x",res,LRC);
     isValid = LRC == res;
 
 }
@@ -174,7 +174,7 @@ void Modbus::generate()
         }
     }
     LRC = generateCLR();
-    qDebug()<<"LRC = "<<LRC;
+//    qDebug()<<"LRC = "<<LRC;
     rawData.append(((char*)(&LRC))+0,1);
     rawData.append(((char*)(&LRC))+1,1);
     isValid = true;

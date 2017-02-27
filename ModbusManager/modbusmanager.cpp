@@ -1,5 +1,4 @@
 #include "modbusmanager.h"
-#include"globalinfo.h"
 #include "modbus.h"
 #include "qextserialport/src/qextserialport.h"
 #include<iostream>
@@ -19,7 +18,7 @@ using namespace std;
 static void QextSerialPort_init(QextSerialPort *port)
 {
     port->setDtr(false);
-    port->setBaudRate(BAUD19200);
+    port->setBaudRate(BAUD9600);
     port->setFlowControl(FLOW_OFF);
     port->setParity(PAR_EVEN);
     port->setDataBits(DATA_8);
@@ -95,14 +94,13 @@ ModbusManager::~ModbusManager()
 }
 void ModbusManager::readyData()
 {
-    //GlobalInfo::getInstance()->debugStack.appendStack(QThread::currentThreadId(),"ready entry ModbusManager::readyData");
     Modbus* mb = NULL;
     static int addr = -1;
     static int code = -1;
     static QByteArray buff;
     QByteArray tmp;
     static int start = 0, end = -1;
-    //qDebug("recv >>>>>>>>>>>>>>>>>>>");
+//    qDebug("recv >>>>>>>>>>>>>>>>>>>");
     while((tmp = serial->readAll()).length() != 0)
     {
         buff.append(tmp);
@@ -130,7 +128,6 @@ void ModbusManager::readyData()
 
     if(buff.length() < 7)
     {
-        //GlobalInfo::getInstance()->debugStack.appendStack(QThread::currentThreadId(),"leave ModbusManager::readyData");
         return;
     }
     addr = (int)buff.data()[0];
@@ -138,19 +135,13 @@ void ModbusManager::readyData()
     {
         goto err;
     }
-    if(code == -1)
-    {
-        code = (int)buff.data()[1];
-    }
+    code = (int)buff.data()[1];
+
     if(code != 0x10)
     {
         goto err;
     }
-
-    if(end == -1)
-    {
-        end = (int)buff.data()[6]+8;
-    }
+    end = (int)buff.data()[6]+8;
 
     if(end > 41 )
     {
@@ -160,7 +151,6 @@ void ModbusManager::readyData()
 //    qDebug("length=%d,start=%d ",buff.length(),start);
     if(buff.length()-start <end+1)
     {
-        //GlobalInfo::getInstance()->debugStack.appendStack(QThread::currentThreadId(),"leave ModbusManager::readyData");
         return;
     }
 //    qDebug("end = %d 222",end);
@@ -173,24 +163,20 @@ void ModbusManager::readyData()
     {
         qDebug("Modbus not has avalid data:");
         delete mb;
-        //GlobalInfo::getInstance()->debugStack.appendStack(QThread::currentThreadId(),"leave ModbusManager::readyData");
         return;
     }
     //mb->print();
-//    qDebug()<<"Modbus List is "<<mbList.count();
     if(mbList.count() > 50)
         delete mbList.takeFirst();
     mbList.append(mb);
 
     emit readyRead();
-    //GlobalInfo::getInstance()->debugStack.appendStack(QThread::currentThreadId(),"leave ModbusManager::readyData");
     return;
 err:
     addr = -1;
     end = -1;
     code = -1;
     buff.clear();
-    //GlobalInfo::getInstance()->debugStack.appendStack(QThread::currentThreadId(),"leave ModbusManager::readyData");
     return;
 }
 Modbus* ModbusManager::getOneModbus()
@@ -261,7 +247,7 @@ void ModbusManager::SendOneModbus(Modbus& mb)
     }
 
     //__setDirection();
-    qDebug("_____2 delay %d",delay);
+//    qDebug("_____2 delay %d",delay);
     usleep(delay + 2000);
     //ZTools::msleep(delay);
     setDirection(0);

@@ -47,6 +47,9 @@ void ZTool::msleep(int ms)
     QTimer::singleShot(ms,&q,SLOT(quit()));
     q.exec();
 }
+
+
+
 int ZTool::getCarID()
 {
     QList<QHostAddress> list = QNetworkInterface::allAddresses();

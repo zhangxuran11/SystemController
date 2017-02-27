@@ -9,7 +9,7 @@ public:
     static quint64 ascii2hex(const char *ascii,int len);
     static void msleep(int ms);
     static QByteArray readLineFromFile(const QString& fileName,int lineNo);
-    static int getCarID();
+    static int getCarID();\
 };
 
 #endif // ZTOOL_H

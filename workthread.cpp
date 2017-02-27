@@ -31,7 +31,7 @@ WorkThread::WorkThread(QObject *parent) :
     rmc.dateTime.setDate(QDate::currentDate());
     rmc.dateTime.setTime(QTime::currentTime());
     rmc.speed = 0;
-    hwCLockId = startTimer(60*60*1000);
+    hwCLockId = startTimer(60*1000);
     carrierClockId = startTimer(1000);
 }
 WorkThread::~WorkThread(){
@@ -65,18 +65,14 @@ void WorkThread::onRecvNetMsg()
     {
         if(comBroadcastManager != NULL)
         {
-            static unsigned int cnt = 0;
-            cnt++;
             comBroadcastManager->dateTime = QDateTime::fromString(ztp.getPara("DateTime"),"yy-MM-dd hh:mm:ss");
             comBroadcastManager->speed = ztp.getPara("Speed").toFloat();
             comBroadcastManager->trainId = ztp.getPara("TrainNum").toInt();
-            comBroadcastManager->carId = ZTools::getCarID();
-            if(cnt > 10) {
+
                 comBroadcastManager->startStationEN = ztp.getPara("StartStation");
                 comBroadcastManager->endStationEN = ztp.getPara("EndStation");
                 comBroadcastManager->startStationThai = ztp.getPara("StartStation_th");
                 comBroadcastManager->endStationThai = ztp.getPara("EndStation_th");
-            }
             comBroadcastManager->start();
 
 //            QString str =  ztp.getPara("StartStation_th");
@@ -382,8 +378,8 @@ void WorkThread::test()
 }
 static void modbusDeal()
 {
-    temp = 0;
-    outTemp = 0;
+    temp = 25;
+    outTemp = 33;
     if(GlobalInfo::getInstance()->VServerIP != "")
     {
         ZTPManager* ztpm = new ZTPManager;
@@ -445,6 +441,10 @@ void WorkThread::recvModbus()
     {
         temp = _ac->datList[4]*0.1-30;
         outTemp = _ac->datList[5]*0.1-30;
+        if(_ac->datList[0] != ZTools::getCarID())
+        {
+            ZTools::setCarID(_ac->datList[0]);
+        }
     }
     delete _ac;
     //GlobalInfo::getInstance()->debugStack.appendStack(QThread::currentThreadId(),"leave recvModbus");
@@ -585,11 +585,18 @@ void WorkThread::timerEvent(QTimerEvent*event)
         sendMapTableSwitch();
     if(event->timerId()==hwCLockId)
     {
-        if(rmc.satelliteNr >= 5)
+        //QString str1 = rmc.dateTime.toString("yyyy-MM-dd HH:mm:ss");
+        //QString str2 = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss");
+        //QString cmd = "echo gps : "+str1 + " >> /appbin/log.txt";
+        //system(cmd.toLatin1().data());
+        //cmd = "echo cur : "+str2 + " >> /appbin/log.txt";
+        //system(cmd.toLatin1().data());
+        if(rmc.satelliteNr >= 5 && rmc.dateTime.secsTo(QDateTime::currentDateTime()) < 0) //卫星时间超前
         {
+            //system("echo write time xxxxxxxxxxxxxxxxxxxxxxx >> /appbin/log.txt");
            QString dateTime = rmc.dateTime.toString("yyyy-MM-dd HH:mm:ss");
            QString str = QString("date -s \"%1\" && hwclock -w ").arg(dateTime);
-           qDebug()<<"exec "<<str;
+           //qDebug()<<"exec "<<str;
            system(str.toLatin1().data());
         }
     }
@@ -697,7 +704,7 @@ void WorkThread::run()
 
     ZTPManager* g_infoZtpm = new ZTPManager(8311,QHostAddress(BROADCAST_IP));
     connect(g_infoZtpm,SIGNAL(readyRead()),this,SLOT(onRecvNetMsg()));//G_INFO包中仅更新广播控制器串口数据缓存，可以放在子线程。
-    modbusManager = new ModbusManager("/dev/ttyUSB1",4);
+    modbusManager = new ModbusManager("/dev/ttyUSB1",0);
     modbusDog = new SoftWatchdog(modbusManager,modbusDeal);
     connect(modbusManager,SIGNAL(readyRead()),this,SLOT(recvModbus()),Qt::DirectConnection);
     bool res = modbusManager->open();
